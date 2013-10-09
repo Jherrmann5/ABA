@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ABAApp', [])
+angular.module('ABAApp', ['ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
