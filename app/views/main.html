@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default" bs-navbar>
+<div class="container">
+<nav class="navbar navbar-inverse" bs-navbar>
 	<div class="navbar-inner">
 		<a class="brand" href="#">Automated Bartender Assistant</a>
 		<!--<ul class="navbar btn-group btn-group-justified">
@@ -13,12 +14,22 @@
 		</ul>
 	</div>
 </nav>
-<div class="hero-unit">
-	<h1>'Allo, 'Allo!</h1>
-	<p>You now have</p>
-	<ul>
-		<li ng-repeat="thing in awesomeThings">{{thing}}</li>
-	</ul>
-	<p>installed.<span class="glyphicon glyphicon-cog"></span></p>
-	<h4>Enjoy coding! - Yeoman</h4>
+	<div class="hero-unit">
+		<h1>'Allo, 'Allo!</h1>
+		<p>You now have</p>
+		<ul>
+			<li class="dropdown">
+				<a class="dropdown-toggle">
+					Click me to see some awesome things!
+				</a>
+				<ul class="dropdown-menu">
+					<li ng-repeat="thing in awesomeThings">
+						<a>{{thing}}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>installed.<span class="glyphicon glyphicon-cog"></span></p>
+		<h4>Enjoy coding! - Yeoman</h4>
+	</div>
 </div>
