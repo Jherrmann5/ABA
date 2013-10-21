@@ -5,7 +5,7 @@ angular.module('ABAApp', ['ui.bootstrap'])
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainController'
       })
       .otherwise({
         redirectTo: '/'

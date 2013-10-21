@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('ABAApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('HomeController', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma',
-      'SitePoint'
+      'SitePoint',
+      'Joel',
+      'Trent'
     ];
   });

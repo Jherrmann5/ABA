@@ -2,10 +2,11 @@
 	<div class="masthead">
 		<h4 class="text-muted">Automated Bartender Assistant</h4>
 		<ul class="nav nav-justified">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Tabs</a></li>
-			<li><a href="#">Inventory</a></li>
-			<li><a href="#">Settings</a></li>
-		</ul> <!-- navbar-nav -->
-	</div>
+			<li ng-repeat="page in pages">
+				<a href="#">{{ page }}</a></li>
+			</ul> <!-- navbar-nav -->
+		</div> <!-- masthead -->
+
+		<!-- include logic to handle which "component" to load -->
+
 </div> <!-- container -->
