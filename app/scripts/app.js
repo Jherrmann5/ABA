@@ -3,11 +3,23 @@
 angular.module('ABAApp', ['ui.bootstrap'])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainController'
+      .when('/home', {
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
+      })
+      .when('/tabs', {
+        templateUrl: 'views/tabs.html',
+        controller: 'TabsController'
+      })
+      .when('/inventory', {
+        templateUrl: 'views/inventory.html',
+        controller: 'InventoryController'
+      })
+      .when('/settings', {
+        templateUrl: 'views/settings.html',
+        controller: 'SettingsController'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
   });
