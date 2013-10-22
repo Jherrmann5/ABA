@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ABAApp', ['ui.bootstrap'])
-  .config(function ($routeProvider) {
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/home', {
         templateUrl: 'views/home.html',
@@ -20,6 +20,7 @@ angular.module('ABAApp', ['ui.bootstrap'])
         controller: 'SettingsController'
       })
       .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/home',
+        controller: 'HomeController'
       });
-  });
+  }]);

@@ -1,18 +1,39 @@
 'use strict';
 
 angular.module('ABAApp')
-  .controller('MainController', function ($scope) {
-    $scope.pages = [
-      'Home',
-      'Tabs',
-      'Inventory',
-      'Settings',
-    ];
-    $scope.pages.index = '1';
-    $scope.pages.active = function() {
-      return $scope.pages[$scope.pages.index];
+  .controller('MainController', function ($scope, $location) {
+    $scope.init = function() {
+      $route.reload();
     }
-    $scope.isActive = function(activePage) {
-      return activePage === $scope.pages.active();
+    $scope.pages = [
+      {
+        name: 'Home',
+        link: 'home'
+      },
+      {
+        name: 'Tabs',
+        link: 'tabs'
+      },
+      {
+        name: 'Inventory',
+        link: 'inventory'
+      },
+      {
+        name: 'Settings',
+        link: 'settings'
+      }
+    ];
+    $scope.pages.index = $location.path();
+
+    $scope.activePage = function(page) {
+      var currentRoute = $location.path().substring(1) || 'home';
+      return page === currentRoute ? 'active' : '';
+    }
+
+    $scope.pages.isActive = function($page) {
+      return $page.name == $location.path();
+    }
+    $scope.updateIndex = function() {
+      $scope.pages.index = $location.path();
     }
   });
