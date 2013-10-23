@@ -1,13 +1,11 @@
-<div class="container">
-	<div class="masthead">
-		<h4 class="text-muted">Automated Bartender Assistant</h4>
-		<div class="btn-group btn-group-justified">
-			<a ng-repeat="page in pages" href="#/{{page.link}}" ng-class="activePage(page.link)" class="btn btn-default">
-				{{page.name}}
-			</a>
-		</div>
-	</div> <!-- masthead -->
+<div class="masthead" ng-controller="MainController">
+	<h4 class="text-muted">Automated Bartender Assistant</h4>
+	<div class="btn-group btn-group-justified">
+		<a ng-repeat="page in pages" href="#/{{page.link}}" ng-class="activePage(page.link)" class="btn btn-default">
+			{{page.name}}
+		</a>
+	</div>
+</div> <!-- masthead -->
 
-	<!-- include logic to handle which "component" to load -->
-	<div ng-view></div>
-</div> <!-- container -->
+<!-- include logic to handle which "component" to load -->
+<div ng-view></div>
