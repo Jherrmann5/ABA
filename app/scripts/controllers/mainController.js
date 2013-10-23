@@ -23,17 +23,9 @@ angular.module('ABAApp')
 		link: 'settings'
 	}
 	];
-	$scope.pages.index = $location.path();
 
 	$scope.activePage = function(page) {
 		var currentRoute = $location.path().substring(1) || 'home';
 		return page === currentRoute ? 'active' : '';
-	}
-
-	$scope.pages.isActive = function($page) {
-		return $page.name == $location.path();
-	}
-	$scope.updateIndex = function() {
-		$scope.pages.index = $location.path();
 	}
 }]);
