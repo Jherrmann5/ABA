@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('ABAApp')
-  .controller('HomeController', function ($scope) {
-    //empty!
-  });
+  .controller('HomeController', ['$scope', function ($scope) {
+    $scope.drinks = [
+    	'Rum & Coke',
+    	'Whiskey Sour',
+    	'Gin & Tonic',
+    	'Whiskey on the Rocks'
+    ];
+  }]);

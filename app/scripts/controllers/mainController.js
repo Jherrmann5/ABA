@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ABAApp')
-  .controller('MainController', function ($scope, $location) {
+  .controller('MainController', ['$scope', '$location', function ($scope, $location) {
     $scope.init = function() {
       $route.reload();
     }
@@ -36,4 +36,4 @@ angular.module('ABAApp')
     $scope.updateIndex = function() {
       $scope.pages.index = $location.path();
     }
-  });
+  }]);

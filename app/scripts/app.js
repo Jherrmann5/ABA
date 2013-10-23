@@ -20,7 +20,6 @@ angular.module('ABAApp', ['ui.bootstrap'])
         controller: 'SettingsController'
       })
       .otherwise({
-        redirectTo: '/home',
-        controller: 'HomeController'
+        redirectTo: '/home'
       });
   }]);
