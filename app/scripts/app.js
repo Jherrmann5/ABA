@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('ABAApp', ['ui.bootstrap'])
-  .config(['$routeProvider', function ($routeProvider) {
+var ABAApp = angular.module('ABAApp', ['ui.bootstrap']);
+
+ABAApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/home', {
         templateUrl: 'views/home.html',

@@ -1,6 +1,5 @@
 'use strict';
 
-angular.module('ABAApp')
-  .controller('InventoryController', function ($scope) {
+ABAApp.controller('InventoryController', function ($scope) {
     //empty!
   });

@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('ABAApp')
-.controller('MainController', ['$scope', '$location', function ($scope, $location) {
+ABAApp.controller('MainController', ['$scope', '$location', function ($scope, $location) {
 	$scope.init = function() {
 		$route.reload();
 	}
