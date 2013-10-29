@@ -3,14 +3,13 @@
 		<h4 class="text-muted">Select a drink to create</h4>
 		<div class="row">
 			<div ng-repeat="drink in drinks" class="col-sm-6 col-md-4">
-				<button class="btn btn-default btn-lg btn-block">{{drink}}</button>
+				<button class="btn btn-default btn-lg btn-block">{{drink.name}}</button>
 			</div> <!-- col-sm-4 -->
-			<div class="col-sm-6 col-md-4 col-lg-3">
+			<div class="col-sm-6 col-md-4">
 				<button class="btn btn-primary btn-lg btn-block">Custom Drink</button>
 			</div>
 		</div> <!-- row -->
 	</div> <!-- col-sm-8 -->
-	<div class="row">
 		<div class="col-sm-4">
 			<h3>Drink Queue</h3>
 			<div class="list-group">

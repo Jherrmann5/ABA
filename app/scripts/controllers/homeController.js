@@ -1,5 +1,6 @@
 'use strict';
 
+<<<<<<< HEAD
 angular.module('ABAApp')
   .controller('HomeController', ['$scope', function ($scope) {
     $scope.drinks = [
@@ -17,3 +18,8 @@ angular.module('ABAApp')
     	'blackout'
     ];
   }]);
+=======
+ABAApp.controller('HomeController', ['$scope', 'Drinks', function ($scope, Drinks) {
+    $scope.drinks = Drinks.getDrinks();
+  }]);
+>>>>>>> 8f14254ad6fcebdd1aa9f361bc4718fe8221270d

@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('ABAApp')
-.controller('TabsController', function ($scope) {
-	$scope.customers = [
-		{'name':'Matt Elliott', 'amount':'62.50'},
-		{'name':'Joel Herrmann', 'amount':'17.00'}
-	];
-});
+ABAApp.controller('TabsController', ['$scope', 'Tabs', '$filter', function ($scope, Tabs, $filter) {
+	$scope.openTabs = Tabs.getOpenTabs();
+
+	$scope.searchName = function(name) {
+		$scope.queryResult = $filter('filter')($scope.openTabs, name, false);
+		alert($scope.queryResult.name);
+	}
+}]);

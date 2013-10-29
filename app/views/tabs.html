@@ -14,9 +14,9 @@
                         <td></td>
                         <td><button ng-click="addCustomer(someVar)" type="button" class="btn btn-success btn-sm" style="float:right;">Open Tab</button></td>
                     </tr>
-                    <tr ng-repeat="customer in customers">
-                        <td>{{customer.name}}</td>
-                        <td><span class="pull-right">{{customer.amount | currency}}</span></td>
+                    <tr ng-repeat="tab in openTabs">
+                        <td>{{tab.name}}</td>
+                        <td><span class="pull-right">{{tab.amt | currency}}</span></td>
                         <td><button type="button" class="btn btn-danger btn-sm pull-right">Close Tab</button></td>
                     </tr>
                 </tbody>
@@ -24,16 +24,17 @@
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="well">
-                <input class="form-control" placeholder="Search Customer Name" ng-model="searchText.name" />
-                <h4>Matt Elliott</h4>
-                <h5>Drink Orders</h5>
-                <hr />
-                <ul>
-                    <li>Crazy Expensive Drink: <span class="pull-right">$23.50</span></li>
-                    <li>Huge Rum and Coke: <span class="pull-right">$12.50</span></li>
-                </ul>
-                <hr />
-                <strong>Total: <span class="pull-right">$62.50</span></strong>
+                <input class="form-control" placeholder="Search Customer Name" ng-model="query" />
+                <div ng-repeat="tab in openTabs | filter:query">
+                    <h4>{{tab.name}}</h4>
+                    <h5>Drink Orders</h5>
+                    <hr />
+                    <ul>
+                        <li>{{tab.drink.name}}<span class="pull-right">{{tab.drink.price | currency}}</span></li>
+                    </ul>
+                    <hr />
+                    <strong>Total: <span class="pull-right">$62.50</span></strong>
+                </div>
             </div>
         </div>
     </div>
