@@ -8,4 +8,12 @@ angular.module('ABAApp')
     	'Gin & Tonic',
     	'Whiskey on the Rocks'
     ];
+    $scope.queues =[
+    	'Pouring',
+    	'On Deck',
+    	'In the Hole',
+    	'If we are lucky',
+    	'#drunk',
+    	'blackout'
+    ];
   }]);
