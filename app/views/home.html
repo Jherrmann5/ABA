@@ -12,10 +12,11 @@
 	</div> <!-- col-sm-8 -->
 		<div class="col-sm-4">
 			<h3>Drink Queue</h3>
-			<div class="btn-group-vertical">
-				<button type="button" class="btn">Next</button>
-				<button type="button" class="btn">And then</button>
-				<button type="button" class="btn">really long button name</button>
+			<div class="list-group">
+				<div ng-repeat="queue in queues" class="list-group-item">
+					<a href="#" class="list-group-item">{{queue}}</a>
+				</div>
+			</div>
 		</div><!--col-md-4 -->
-	</div>
+	</div> <!-- row sm-4 -->
 </div> <!-- row -->

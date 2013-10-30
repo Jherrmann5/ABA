@@ -1,5 +1,25 @@
 <div class="row">
-	<div class="col-sm-2">Left Padding</div>
-	<div class="col-sm-8 text-center">Main Content</div>
-	<div class="col-sm-2">Right Padding</div>
-</div> <!-- row -->
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10 text-center">
+		<h1>Bottle Levels</h1>
+		
+		<div ng-repeat="bottle in CurrentIngredients">
+			<div class="row">
+				<div class="col-sm-2">
+					<h4>{{bottle.type}}</h4>
+				</div>
+				<div class="col-sm-7">
+					<div class="progress">
+						<div class="progress-bar progress-bar-success" role="	progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{bottle.level}}%"}>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-1">
+					<h5>{{bottle.level}}%</h5>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-sm-1"></div>
+</div> <!-- col-sm-8 -->
