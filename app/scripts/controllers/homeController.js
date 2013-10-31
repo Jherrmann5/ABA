@@ -1,25 +1,21 @@
 'use strict';
 
-ABAApp.controller('HomeController', ['$scope', 'Drinks', function ($scope, Drinks) {
-	$scope.drinks = [
-		'Rum & Coke',
-		'Whiskey Sour',
-		'Gin & Tonic',
-		'Whiskey on the Rocks'
-	];
-	$scope.queues =[
-		'Pouring',
-		'On Deck',
-		'In the Hole',
-		'If we are lucky',
-		'#drunk',
-		'blackout'
-	];
-	Drinks.updateDrinks();
-	$scope.drinks = Drinks.getDrinks();
+ABAApp.controller('HomeController', ['$scope', 'Drinks', 'Queue', function ($scope, Drinks, Queue) {
+	$scope.drinks = Drinks.drinks;
+	$scope.queue = Queue.drinks;
 
-	$scope.updateDrinks = function() {
-		Drinks.updateDrinks();
-		$scope.drinks = Drinks.getDrinks();
-	}
+	$scope.addToQ = function(drink) {
+		Queue.addToQ(drink);
+		$scope.queue = Queue.drinks;
+	};
+
+	$scope.removeFirstInQ = function() {
+		Queue.removeFirstInQ();
+		$scope.queue = Queue.drinks;
+	};
+
+	$scope.removeFromQ = function(queueItem) {
+		Queue.removeFromQ(queueItem);
+		$scope.queue = Queue.drinks;
+	};
 }]);

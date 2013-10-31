@@ -1,5 +1,5 @@
 /*
-This Controller will operate the BeagleBone Black
+This Factory will operate the BeagleBone Black
 
 Pins 3-5 are output (0-7 in binary)
 Pin 6 is the input from the cup detector
@@ -24,7 +24,10 @@ b.pinmode(bone.P8_4,b.OUTPUT);
 b.pinmode(bone.P8_5,b.OUTPUT);
 b.pinmode(bone.P8_6,b.INPUT);
 
-function Main(command){//receive integer value (1-6)
+//main control function definition
+function CabinetControl(command){}//receive integer value (1-6)
+
+CabinetControl.operation = function(){
 	if (command==0){exit();}
 	else (command==7){//check for rinse status
 		Rinse;

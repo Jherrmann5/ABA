@@ -1,40 +1,40 @@
 <div class="row">
-        <div class="col-sm-6 col-md-8">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th><span class="pull-right">Total Bill</span></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input class="form-control" type="textbox" placeholder="New Customer Name"/></td>
-                        <td></td>
-                        <td><button ng-click="addCustomer(someVar)" type="button" class="btn btn-success btn-sm" style="float:right;">Open Tab</button></td>
-                    </tr>
-                    <tr ng-repeat="tab in openTabs">
-                        <td>{{tab.name}}</td>
-                        <td><span class="pull-right">{{tab.amt | currency}}</span></td>
-                        <td><button type="button" class="btn btn-danger btn-sm pull-right">Close Tab</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="well">
-                <input class="form-control" placeholder="Search Customer Name" ng-model="query" />
-                <div ng-repeat="tab in openTabs | filter:query">
-                    <h4>{{tab.name}}</h4>
-                    <h5>Drink Orders</h5>
-                    <hr />
-                    <ul>
-                        <li>{{tab.drink.name}}<span class="pull-right">{{tab.drink.price | currency}}</span></li>
-                    </ul>
-                    <hr />
-                    <strong>Total: <span class="pull-right">$62.50</span></strong>
-                </div>
+    <div class="col-sm-6 col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th><span class="pull-right">Total Bill</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input class="form-control" type="text" placeholder="New Customer Name" ng-model="newTab.name"/></td>
+                    <td></td>
+                    <td><button ng-click="openNewTab(newTab)" type="button" class="btn btn-success btn-sm" style="float:right;">Open Tab</button></td>
+                </tr>
+                <tr ng-repeat="tab in openTabs">
+                    <td>{{tab.name}}</td>
+                    <td><span class="pull-right">{{tab.amt | currency}}</span></td>
+                    <td><button ng-click="closeTab(tab)" type="button" class="btn btn-danger btn-sm pull-right">Close Tab</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6 col-md-4">
+        <div class="well">
+            <input class="form-control" placeholder="Search Customer Name" ng-model="query" />
+            <div ng-repeat="tab in openTabs | filter:query">
+                <h4>{{tab.name}}</h4>
+                <h5>Drink Orders</h5>
+                <hr />
+                <ul>
+                    <li>{{tab.amt}}<span class="pull-right">{{tab.drink.price | currency}}</span></li>
+                </ul>
+                <hr />
+                <strong>Total: <span class="pull-right">$62.50</span></strong>
             </div>
         </div>
     </div>
+</div>
