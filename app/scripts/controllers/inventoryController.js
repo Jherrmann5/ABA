@@ -1,5 +1,5 @@
 'use strict';
 
-ABAApp.controller('InventoryController', ['$scope', 'Ingredients', '$filter', function ($scope, Ingredients, $filter) {
-	$scope.bayIngredients = Ingredients.getIngredients();
+ABAApp.controller('InventoryController', ['$scope', 'IngredientsFactory', '$filter', function ($scope, IngredientsFactory, $filter) {
+	$scope.bayIngredients = IngredientsFactory.bayIngredients;
 }]);

@@ -1,33 +1,39 @@
 'use strict';
 
-ABAApp.factory('Ingredients', function() {
+ABAApp.factory('IngredientsFactory', function() {
 	var ingredientsFactory = {};
 
 	ingredientsFactory.bayIngredients = [
 		{
 			type: "Rum",
-			level: 50
+			level: 75,
+			totalOz: 25.36
 		},
 		{
 			type: "Coke",
-			level: 100
-		},
-/*		{
-			type: "Gin",
-			level: 80
+			level: 75,
+			totalOz: 33.81
 		},
 		{
-			type: "Tonic",
-			level: 100
+			type: "",
+			level: 0,
+			totalOz: 0
 		},
 		{
-			type: "Whiskey",
-			level: 20
+			type: "",
+			level: 0,
+			totalOz: 0
 		},
 		{
-			type: "Rocks",
-			level: 100
-		}*/
+			type: "",
+			level: 0,
+			totalOz: 0
+		},
+		{
+			type: "",
+			level: 0,
+			totalOz: 0
+		}
 	];
 	ingredientsFactory.allIngredients = [
 		{
@@ -53,8 +59,9 @@ ABAApp.factory('Ingredients', function() {
 		}
 	];
 
-	ingredientsFactory.getIngredients = function() {
-		return ingredientsFactory.bayIngredients;
-	}
+	ingredientsFactory.checkLevels = function() {
+
+	};
+
 	return ingredientsFactory;
 });

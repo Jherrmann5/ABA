@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-6 col-md-8">
+    <div class="col-sm-7 col-md-8">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -10,9 +10,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input class="form-control" type="text" placeholder="New Customer Name" ng-model="newTab.name"/></td>
+                    <td><input class="form-control" type="text" placeholder="New Customer Name" ng-model="newTab.name" onkeydown="if (event.keyCode == 13) document.getElementById('btnSearch').click()"/></td>
                     <td></td>
-                    <td><button ng-click="openNewTab(newTab)" type="button" class="btn btn-success btn-sm" style="float:right;">Open Tab</button></td>
+                    <td><button ng-click="openNewTab(newTab)" type="button" class="btn btn-success btn-sm" style="float:right;" id="btnSearch" value="Search">Open Tab</button></td>
                 </tr>
                 <tr ng-repeat="tab in openTabs">
                     <td>{{tab.name}}</td>
@@ -22,18 +22,17 @@
             </tbody>
         </table>
     </div>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-5 col-md-4">
         <div class="well">
             <input class="form-control" placeholder="Search Customer Name" ng-model="query" />
             <div ng-repeat="tab in openTabs | filter:query">
                 <h4>{{tab.name}}</h4>
                 <h5>Drink Orders</h5>
-                <hr />
                 <ul>
-                    <li>{{tab.amt}}<span class="pull-right">{{tab.drink.price | currency}}</span></li>
+                    <li ng-repeat="drink in tab.drinks" ng-click="removeDrinkFromTab(drink)">{{drink.name}}<span class="pull-right">{{drink.price | currency}}</span></li>
                 </ul>
+                <strong>Total: <span class="pull-right">{{tab.amt | currency}}</span></strong>
                 <hr />
-                <strong>Total: <span class="pull-right">$62.50</span></strong>
             </div>
         </div>
     </div>

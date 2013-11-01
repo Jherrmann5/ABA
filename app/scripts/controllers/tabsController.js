@@ -1,7 +1,7 @@
 'use strict';
 
-ABAApp.controller('TabsController', ['$scope', 'Tabs', '$filter', function ($scope, Tabs, $filter) {
-	$scope.openTabs = Tabs.openTabs;
+ABAApp.controller('TabsController', ['$scope', 'TabsFactory', '$filter', function ($scope, TabsFactory, $filter) {
+	$scope.openTabs = TabsFactory.openTabs;
 	
 	$scope.resetNewTab = function() {
 		$scope.newTab = {
@@ -14,13 +14,18 @@ ABAApp.controller('TabsController', ['$scope', 'Tabs', '$filter', function ($sco
 	$scope.resetNewTab();
 
 	$scope.openNewTab = function(tab) {
-		Tabs.openNewTab(tab);
-		$scope.openTabs = Tabs.openTabs;
+		TabsFactory.openNewTab(tab);
+		$scope.openTabs = TabsFactory.openTabs;
 		$scope.resetNewTab();
 	};
 
 	$scope.closeTab = function(tab) {
-		Tabs.closeTab(tab);
-		$scope.openTabs = Tabs.openTabs;
+		TabsFactory.closeTab(tab);
+		$scope.openTabs = TabsFactory.openTabs;
+	};
+
+	$scope.removeDrinkFromTab = function(drink) {
+		TabsFactory.removeDrinkFromTab(drink);
+		$scope.openTabs = TabsFactory.openTabs;
 	};
 }]);
