@@ -34,7 +34,9 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 					for(var k = 0; k < currIng.amt; k++){
 						//do bonescript function
 						//BoneFactory.operation(j);
-						currBay.level -= (1.5/currBay.totalOz)*100;
+						var ozVol = currBay.mlVol*0.033814;
+						currBay.level -= (1.5/ozVol)*100;
+						currBay.level = currBay.level.toFixed(2);
 					}
 				}
 			}
@@ -45,7 +47,7 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 		$timeout(function() {
 			// Simulate a drink being made
 			drinkInProgress = false;
-		}, 5000);
+		}, 7500);
 	};
 
 	// Poll the drink queue every 1.5 seconds to see if a drink

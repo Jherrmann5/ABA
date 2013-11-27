@@ -27,28 +27,31 @@ ABAApp.service('BoneFactory', function() {
 		if (command === 7) {
 			boneFactory.rinse();
 		}
-
-		while (x!==1) { //loop until cup is inserted
-			b.digitalRead(bone.P8_6,x); //check if cup is present
-			if (x===1) { //proceed to "Pour" when cup is inserted
-				boneFactory.pour(command);
+		else if(command !== 0) {
+			while (x!==1) { //loop until cup is inserted
+				b.digitalRead(bone.P8_6,x); //check if cup is present
+				if (x===1) { //proceed to "Pour" when cup is inserted
+					boneFactory.pour(command);
+				}
 			}
 		}
 		x=0;
 		//reset pins
-		A=0;
-		B=0;
-		C=0;
+		A=LOW;
+		B=LOW;
+		C=LOW;
 		b.digitalWrite(bone.P8_3,A);
 		b.digitalWrite(bone.P8_4,B);
 		b.digitalWrite(bone.P8_5,C);
+		//wait for shot to refill
+		PauseComp(20000);
 		//return "finished" signal
 		return 0;
 	};
 
 	boneFactory.rinse = function() {
 		//set all pins high for rinse
-		A=1;
+		A=HIGH;
 		b.digitalWrite(bone.P8_3,A);
 		b.digitalWrite(bone.P8_4,A);
 		b.digitalWrite(bone.P8_5,A);
@@ -59,59 +62,59 @@ ABAApp.service('BoneFactory', function() {
 	boneFactory.pour = function(command) {
 		//Pour Bay #1
 		if (command==1){
-			A=0;
-			B=0;
-			C=1;
+			A=LOW;
+			B=LOW;
+			C=HIGH;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #2
 		else if (command==2){
-			A=0;
-			B=1;
-			C=0;
+			A=LOW;
+			B=HIGH;
+			C=LOW;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #3
 		else if (command==3){
-			A=0;
-			B=1;
-			C=1;
+			A=LOW;
+			B=HIGH;
+			C=HIGH;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #4
 		else if (command==4){
-			A=1;
-			B=0;
-			C=0;
+			A=HIGH;
+			B=LOW;
+			C=LOW;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #5
 		else if (command==5){
-			A=1;
-			B=0;
-			C=1;
+			A=HIGH;
+			B=LOW;
+			C=HIGH;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #6
 		else if (command==6){
-			A=1;
-			B=1;
-			C=0;
+			A=HIGH;
+			B=HIGH;
+			C=LOW;
 			b.digitalWrite(bone.P8_3,A);
 			b.digitalWrite(bone.P8_4,B);
 			b.digitalWrite(bone.P8_5,C);
 		}
-		//hold for 15 seconds
+		//hold for 12 seconds
 		PauseComp(12000);
 	}; //exit
 

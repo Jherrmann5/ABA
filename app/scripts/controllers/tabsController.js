@@ -15,17 +15,14 @@ ABAApp.controller('TabsController', ['$scope', 'TabsFactory', '$filter', functio
 
 	$scope.openNewTab = function(tab) {
 		TabsFactory.openNewTab(tab);
-		$scope.openTabs = TabsFactory.openTabs;
 		$scope.resetNewTab();
 	};
 
 	$scope.closeTab = function(tab) {
 		TabsFactory.closeTab(tab);
-		$scope.openTabs = TabsFactory.openTabs;
 	};
 
 	$scope.removeDrinkFromTab = function(drink) {
 		TabsFactory.removeDrinkFromTab(drink);
-		$scope.openTabs = TabsFactory.openTabs;
 	};
 }]);

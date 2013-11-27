@@ -6,7 +6,7 @@ ABAApp.factory('DrinksFactory', function() {
 	drinksFactory.drinks = [
 		{
 			name: 'Rum & Coke',
-			price: 3.50,
+			price: 4.00,
 			ing: [
 				{
 					name: 'Rum',
@@ -21,7 +21,7 @@ ABAApp.factory('DrinksFactory', function() {
 		},
 		{
 			name: 'Gin & Tonic',
-			price: 3.75,
+			price: 4.50,
 			ing: [
 				{
 					name: 'Gin',
@@ -47,10 +47,21 @@ ABAApp.factory('DrinksFactory', function() {
 		},
 		{
 			name: 'Coke',
-			price: 4.25,
+			price: 2.75,
 			ing: [
 				{
 					name: 'Coke',
+					amt: 4
+				}
+			],
+			tabName: ''
+		},
+		{
+			name: 'Tonic Water',
+			price: 2.00,
+			ing: [
+				{
+					name: 'Tonic',
 					amt: 4
 				}
 			],

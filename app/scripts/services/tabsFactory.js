@@ -23,7 +23,7 @@ ABAApp.factory('TabsFactory', function() {
 	tabsFactory.removeDrinkFromTab = function(drink) {
 		// If the drink has a tabName assigned to it,
 		//    remove this from entry from the tab
-		if(drink.tabName !== '') {
+		if(drink.tabName !== undefined) {
 			// If queue item is associated with a tab, subtract
 			//    the drink from tab
 			var index = tabsFactory.findIndexByName(drink.tabName);
