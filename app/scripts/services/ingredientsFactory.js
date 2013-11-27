@@ -59,8 +59,8 @@ ABAApp.factory('IngredientsFactory', function() {
 		}
 	];
 
-	ingredientsFactory.checkLevels = function() {
-
+	ingredientsFactory.isValidDrink = function(drink) {
+		return true;
 	};
 
 	return ingredientsFactory;

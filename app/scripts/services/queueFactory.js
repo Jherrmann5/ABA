@@ -22,32 +22,49 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 		queueFactory.drinks.splice(index, 1);
 	};
 
-	queueFactory.makeDrink = function(drink){
+	var requestDrink = function(drink) {
+		if(IngredientsFactory.isValidDrink(drink)) {
+			makeDrink(drink);
+		} else {
+			alert("Drink cannot be made. Check that there is enough"+
+				"inventory left and the correct drinks are hooked up to the system.");
+		}
+	}
+
+	var makeDrink = function(drink){
 		var numIng = drink.ing.length;
 		var numBay = IngredientsFactory.bayIngredients.length;
 
 		for(var i = 0; i < numIng; i++) {
 			var currIng = drink.ing[i];
+			// Try to find matching ingredient in ing bays
 			for(var j = 0; j < numBay; j++) {
 				var currBay = IngredientsFactory.bayIngredients[j];
-				if(currIng.name === currBay.type) {
+				// Check to make sure there are more than 1.5 oz left in bottle
+				// If there are less than 1.5 oz left, skip this bottle!
+					// Conversion to check how many oz left in bottle
+				var ozLeft = (currBay.mlVol * currBay.level/100) * 0.033814;
+				if(currIng.name === currBay.type && ozLeft >= (1.5*currIng.amt)) {
 					for(var k = 0; k < currIng.amt; k++){
 						//do bonescript function
 						//BoneFactory.operation(j);
+
+						// Convert ml to oz, do conversion, subtract
+						//   % from current bottle level, and round
+						//   to 2 decimal places
 						var ozVol = currBay.mlVol*0.033814;
 						currBay.level -= (1.5/ozVol)*100;
 						currBay.level = currBay.level.toFixed(2);
+						j = numBay;	// Quit looping through ingredients since one has been found
 					}
 				}
 			}
 		}
 
-		IngredientsFactory.checkLevels();
-
 		$timeout(function() {
 			// Simulate a drink being made
 			drinkInProgress = false;
-		}, 7500);
+		}, 2500);
 	};
 
 	// Poll the drink queue every 1.5 seconds to see if a drink
@@ -59,7 +76,7 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 			if((queueFactory.drinks.length > 0) && (drinkInProgress === false)) {
 				drinkInProgress = true;
 				var drinkToCreate = queueFactory.drinks[0];
-				queueFactory.makeDrink(drinkToCreate);
+				requestDrink(drinkToCreate);
 				queueFactory.drinks.shift();
 			}
 			queueFactory.poll();

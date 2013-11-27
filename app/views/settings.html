@@ -8,7 +8,7 @@
 			<div class="input-group">
 				<span class="input-group-addon">Bottle Type</span>
 				<span class="nullable">
-					<select class="form-control" ng-model="selectedIngredient" ng-options="ing.type for ing in allIngredients" ng-click="updateSelectedBayIng()">
+					<select ng-model="selectedIngredient" ng-options="ing.type for ing in allIngredients" ng-click="updateSelectedBayIng()">
 						<option value="">N/A</option>
 					</select>
 				</span>
