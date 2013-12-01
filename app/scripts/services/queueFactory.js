@@ -25,6 +25,7 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 	var requestDrink = function(drink) {
 		if(IngredientsFactory.isValidDrink(drink)) {
 			makeDrink(drink);
+			queueFactory.drinks.shift();
 		} else {
 			alert("Drink cannot be made. Check that there is enough"+
 				"inventory left and the correct drinks are hooked up to the system.");
@@ -77,7 +78,6 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 				drinkInProgress = true;
 				var drinkToCreate = queueFactory.drinks[0];
 				requestDrink(drinkToCreate);
-				queueFactory.drinks.shift();
 			}
 			queueFactory.poll();
 		}, 2500);
