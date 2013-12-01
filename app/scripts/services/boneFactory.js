@@ -1,13 +1,12 @@
 /*
 This Factory will operate the BeagleBone Black
 
-Pins 3-5 are output (0-7 in binary)
-Pin 6 is the input from the cup detector
-Pro
+Pins 3-8 are output
+Pin 9 is the input from the cup detector
 */
 
 //******Need commands to call this function**********
-//Send: Integer value 1-7
+//Send: Integer value 1-6
 //Receive: 0=process finished
 
 "use strict";
@@ -18,31 +17,35 @@ ABAApp.service('BoneFactory', function() {
 	//variable and setting definition
 	var b=require('bonescript');
 	var x=0, A=0, B=0, C=0;
-	b.pinmode(bone.P8_3,b.OUTPUT);
-	b.pinmode(bone.P8_4,b.OUTPUT);
-	b.pinmode(bone.P8_5,b.OUTPUT);
-	b.pinmode(bone.P8_6,b.INPUT);
+	b.pinmode(bone.P8_3,b.OUTPUT);//bay 1
+	b.pinmode(bone.P8_4,b.OUTPUT);//bay 2
+	b.pinmode(bone.P8_5,b.OUTPUT);//bay 3
+	b.pinmode(bone.P8_6,b.OUTPUT);//bay 4
+	b.pinmode(bone.P8_7,b.OUTPUT);//bay 5
+	b.pinmode(bone.P8_8,b.OUTPUT);//rinse
+	b.pinmode(bone.P8_9,b.INPUT);//cup detector
 
 	boneFactory.operation = function(command) {
 		if (command === 7) {
 			boneFactory.rinse();
 		}
 		else if(command !== 0) {
-			while (x!==1) { //loop until cup is inserted
-				b.digitalRead(bone.P8_6,x); //check if cup is present
-				if (x===1) { //proceed to "Pour" when cup is inserted
+			while (x!==HIGH) { //loop until cup is inserted
+				b.digitalRead(bone.P8_9,x); //check if cup is present
+				if (x===HIGH) { //proceed to "Pour" when cup is inserted
 					boneFactory.pour(command);
 				}
 			}
 		}
-		x=0;
+		x=LOW;
 		//reset pins
 		A=LOW;
-		B=LOW;
-		C=LOW;
 		b.digitalWrite(bone.P8_3,A);
-		b.digitalWrite(bone.P8_4,B);
-		b.digitalWrite(bone.P8_5,C);
+		b.digitalWrite(bone.P8_4,A);
+		b.digitalWrite(bone.P8_5,A);
+		b.digitalWrite(bone.P8_6,A);
+		b.digitalWrite(bone.P8_7,A);
+		b.digitalWrite(bone.P8_8,A);
 		//wait for shot to refill
 		PauseComp(20000);
 		//return "finished" signal
@@ -50,11 +53,9 @@ ABAApp.service('BoneFactory', function() {
 	};
 
 	boneFactory.rinse = function() {
-		//set all pins high for rinse
+		//set high for rinse
 		A=HIGH;
-		b.digitalWrite(bone.P8_3,A);
-		b.digitalWrite(bone.P8_4,A);
-		b.digitalWrite(bone.P8_5,A);
+		b.digitalWrite(bone.P8_8,A);
 		//hold for 45 seconds (assume 15 seconds for water to finish draining)
 		PauseComp(45000);
 	}; //exit
@@ -62,57 +63,28 @@ ABAApp.service('BoneFactory', function() {
 	boneFactory.pour = function(command) {
 		//Pour Bay #1
 		if (command==1){
-			A=LOW;
-			B=LOW;
-			C=HIGH;
+			A=HIGH;
 			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
 		}
 		//Pour Bay #2
 		else if (command==2){
-			A=LOW;
-			B=HIGH;
-			C=LOW;
-			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
+			A=HIGH;
+			b.digitalWrite(bone.P8_4,A);
 		}
 		//Pour Bay #3
 		else if (command==3){
-			A=LOW;
-			B=HIGH;
-			C=HIGH;
-			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
+			A=HIGH;
+			b.digitalWrite(bone.P8_5,A);
 		}
 		//Pour Bay #4
 		else if (command==4){
 			A=HIGH;
-			B=LOW;
-			C=LOW;
-			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
+			b.digitalWrite(bone.P8_6,A);
 		}
 		//Pour Bay #5
 		else if (command==5){
 			A=HIGH;
-			B=LOW;
-			C=HIGH;
-			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
-		}
-		//Pour Bay #6
-		else if (command==6){
-			A=HIGH;
-			B=HIGH;
-			C=LOW;
-			b.digitalWrite(bone.P8_3,A);
-			b.digitalWrite(bone.P8_4,B);
-			b.digitalWrite(bone.P8_5,C);
+			b.digitalWrite(bone.P8_7,A);
 		}
 		//hold for 12 seconds
 		PauseComp(12000);
