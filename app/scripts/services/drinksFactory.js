@@ -14,7 +14,7 @@ ABAApp.factory('DrinksFactory', function() {
 				},
 				{
 					name: 'Coke',
-					amt: 3
+					amt: 2
 				}
 			],
 			tabName: ''
@@ -40,7 +40,7 @@ ABAApp.factory('DrinksFactory', function() {
 			ing: [
 				{
 					name: 'Rum',
-					amt: 4
+					amt: 3
 				}
 			],
 			tabName: ''
@@ -73,7 +73,7 @@ ABAApp.factory('DrinksFactory', function() {
 			ing: [
 				{
 					name: 'Vodka',
-					amt: 2
+					amt: 1
 				},
 				{
 					name: 'Tonic',

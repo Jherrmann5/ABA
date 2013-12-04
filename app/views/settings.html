@@ -15,12 +15,12 @@
 			</div><!-- input-group -->
 			<div class="input-group">
 				<span class="input-group-addon">Bottle Size</span>
-				<input type="text" class="form-control" placeholder="750ml" ng-model="selectedBay.mlVol" />
+				<input type="text" class="form-control" placeholder="750ml" ng-model="selectedBay.mlVol" ng-change="validateBottleSize()" />
 				<span class="input-group-addon">ml</span>
 			</div><!-- input-group -->
 			<div class="input-group">
 				<span class="input-group-addon">Fill Level</span>
-				<input type="text" class="form-control" placeholder="100" ng-model="selectedBay.level" />
+				<input type="text" class="form-control" placeholder="100" ng-model="selectedBay.level" ng-change="validateFillLevel()" />
 				<span class="input-group-addon">approx. %</span>
 			</div><!-- input-group -->
 		</div><!-- row -->

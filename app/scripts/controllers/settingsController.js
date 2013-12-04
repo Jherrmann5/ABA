@@ -46,4 +46,18 @@ angular.module('ABAApp')
     	$scope.bayIngredients[$scope.selectedBay.bay-1].type =
     		$scope.selectedIngredient.type;
     }
+
+    $scope.validateFillLevel = function() {
+        if($scope.selectedBay.level < 0) {
+            $scope.selectedBay.level = 0;
+        } else if($scope.selectedBay.level > 100) {
+            $scope.selectedBay.level = 100;
+        }
+    }
+
+    $scope.validateBottleSize = function() {
+        if($scope.selectedBay.mlVol < 0) {
+            $scope.selectedBay.mlVol = 0;
+        }
+    }
   }]);
