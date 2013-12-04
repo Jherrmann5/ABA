@@ -33,6 +33,7 @@ ABAApp.factory('TabsFactory', function() {
 				if(tabsFactory.openTabs[index].drinks[i].name === drink.name) {
 					// If drink name is found, remove from drinks array
 					tabsFactory.openTabs[index].drinks.splice(i, 1);
+					i = tabsFactory; // Quit loop
 				}
 			}
 		}
