@@ -1,7 +1,7 @@
 'use strict';
 
-ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
-	function(IngredientsFactory, $timeout) {
+ABAApp.factory('QueueFactory', ['IngredientsFactory', 'TabsFactory', '$timeout',
+	function(IngredientsFactory, TabsFactory, $timeout) {
 	var queueFactory = {};
 	var drinkInProgress = false;
 
@@ -25,11 +25,19 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 	var requestDrink = function(drink) {
 		if(IngredientsFactory.isValidDrink(drink)) {
 			makeDrink(drink);
-			queueFactory.drinks.shift();
 		} else {
-			alert("Drink cannot be made. Check that there is enough"+
-				"inventory left and the correct drinks are hooked up to the system.");
+			var alertMsg = "-- " + drink.name;
+			if(drink.tabName !== undefined) {
+				// No longer charge customer for a drink that cannot be made
+				TabsFactory.removeDrinkFromTab(drink);
+				alertMsg = alertMsg.concat(" for " + drink.tabName);
+			}
+			alertMsg = alertMsg.concat(" -- cannot be made. Check that there is enough "+
+				"inventory left and the correct drinks are connected to the system.");
+			alert(alertMsg);
+			drinkInProgress = false;
 		}
+		queueFactory.drinks.shift();
 	}
 
 	var makeDrink = function(drink){
@@ -65,7 +73,7 @@ ABAApp.factory('QueueFactory', ['IngredientsFactory', '$timeout',
 		$timeout(function() {
 			// Simulate a drink being made
 			drinkInProgress = false;
-		}, 2500);
+		}, 4500);
 	};
 
 	// Poll the drink queue every 1.5 seconds to see if a drink

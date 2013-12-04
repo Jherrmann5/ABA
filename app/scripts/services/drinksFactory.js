@@ -25,11 +25,11 @@ ABAApp.factory('DrinksFactory', function() {
 			ing: [
 				{
 					name: 'Gin',
-					amt: 1
+					amt: 2
 				},
 				{
 					name: 'Tonic',
-					amt: 3
+					amt: 2
 				}
 			],
 			tabName: ''
@@ -63,6 +63,21 @@ ABAApp.factory('DrinksFactory', function() {
 				{
 					name: 'Tonic',
 					amt: 4
+				}
+			],
+			tabName: ''
+		},
+		{
+			name: 'Vodka Tonic',
+			price: 4.00,
+			ing: [
+				{
+					name: 'Vodka',
+					amt: 2
+				},
+				{
+					name: 'Tonic',
+					amt: 2
 				}
 			],
 			tabName: ''
