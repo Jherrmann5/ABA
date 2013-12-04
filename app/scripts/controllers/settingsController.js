@@ -58,6 +58,8 @@ angular.module('ABAApp')
     $scope.validateBottleSize = function() {
         if($scope.selectedBay.mlVol < 0) {
             $scope.selectedBay.mlVol = 0;
+        } else if($scope.selectedBay.mlVol > 2000) {
+            $scope.selectedBay.mlVol = 2000;
         }
     }
   }]);
