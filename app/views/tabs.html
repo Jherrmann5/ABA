@@ -15,7 +15,7 @@
                     <td><button ng-click="openNewTab(newTab)" type="button" class="btn btn-success btn-sm" style="float:right;" id="btnSearch" value="Search">Open Tab</button></td>
                 </tr>
                 <tr ng-repeat="tab in openTabs">
-                    <td>{{tab.name}}</td>
+                    <td style="text-overflow:ellipsis;">{{tab.name}}</td>
                     <td><span class="pull-right">{{tab.amt | currency}}</span></td>
                     <td><button ng-click="closeTab(tab)" type="button" class="btn btn-danger btn-sm pull-right">Close Tab</button></td>
                 </tr>
